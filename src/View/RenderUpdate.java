@@ -13,7 +13,10 @@ import java.util.logging.Logger;
  * @author GW
  */
 public class RenderUpdate implements Runnable {
-
+    long previoustime = System.nanoTime();
+    long currentTime;
+    long passTime;
+    
     FrameRadar fRadar;
 
     public RenderUpdate(FrameRadar fRadar) {
@@ -23,6 +26,7 @@ public class RenderUpdate implements Runnable {
     @Override
     public void run() {
         while (true) {
+            
             try {
                 java.awt.EventQueue.invokeLater(new Runnable(){
                     @Override
