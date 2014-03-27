@@ -4,9 +4,14 @@
  */
 package View;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.TexturePaint;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.*;
 
 /**
@@ -14,22 +19,40 @@ import javax.imageio.*;
  * @author dmattos18
  */
 public class JpanDisplay extends javax.swing.JPanel {
-
-    BufferedImage img;
-    TexturePaint imgTp;
+//--Example: http://zetcode.com/tutorials/javaswingtutorial/painting/
+    
+    BufferedImage mWater;
+    TexturePaint mWaterTexture;
 
     /**
      * Creates new form jpanDisplay
      */
     public JpanDisplay(){
         initComponents();
-        try {
-            img = ImageIO.read(this.getClass().getResource("greycar.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        loadImages();
     }
 
+    @Override
+    public void paintComponent(Graphics graph)
+    {
+        super.paintComponent(graph);
+        Graphics2D g2d = (Graphics2D) graph;
+        
+        mWaterTexture = new TexturePaint(mWater, new Rectangle(0,0,this.getWidth(),this.getHeight())); 
+        
+        g2d.setPaint(mWaterTexture);
+        g2d.fillRect(0, 0, this.getWidth(),this.getHeight());
+    }
+    //--This will load image into the buffered image
+    private void loadImages()
+    {
+        try {
+            mWater = ImageIO.read(this.getClass().getResource("water-texture.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(JpanDisplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
