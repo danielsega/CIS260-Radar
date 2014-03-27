@@ -13,20 +13,23 @@ import java.util.ArrayList;
 public class Node implements INode{
     //--Data Members
     private Node mParent;
-    private ArrayList<Node> mChildren;
+    private Node mChildren;
     private int nodeID;
+    private static int IDCounter;
     
     Node()
     {
+        IDCounter = 0;
         mParent = null;
-        nodeID = 0;
+        mChildren = null;
     }
     
     public void attachChild(Node child)
     {
+        IDCounter++;
         child.mParent = this;
-        child.nodeID = mParent.nodeID + 1;
-        mChildren.add(child);
+        child.nodeID = Node.IDCounter;
+        mChildren = child;
     }
     
     public void dettachChild(Node child)
