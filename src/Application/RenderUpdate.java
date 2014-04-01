@@ -26,8 +26,7 @@ public class RenderUpdate implements Runnable {
     int frames;
     FrameRadar fRadar;
 
-    public RenderUpdate(FrameRadar fRadar) {
-        this.fRadar = fRadar;
+    public RenderUpdate() {
         deltaTime = 0;
         fps = 0;
         frames = 0;
