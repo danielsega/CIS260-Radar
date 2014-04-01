@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Logic;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author dmattos18
  */
-public class Node implements INode{
+public abstract class Node{
     //--Data Members
     private Node mParent;
     private Node mChildren;
