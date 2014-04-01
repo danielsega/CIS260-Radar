@@ -6,8 +6,6 @@
 package Application;
 
 import View.FrameRadar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

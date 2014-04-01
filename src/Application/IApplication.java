@@ -9,5 +9,10 @@ package Application;
  * @author dmattos18
  */
 public interface IApplication {
-    void update();
+    public void Init();
+    public void cleanUp();
+    
+    public void handleEvents();
+    public void update();
+    public void draw();
 }
