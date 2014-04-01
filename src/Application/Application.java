@@ -4,12 +4,15 @@
  */
 package Application;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author dmattos18
  */
 public class Application {
     private boolean running;
+    ArrayList<GameState> game_states;
     
     Application(){
         running = true;
@@ -25,6 +28,15 @@ public class Application {
     public void update(){
     }
     public void draw(){
+    }
+    
+    void changeState(GameState state){
+        //
+    }
+    
+    void pushState(){
+    }
+    void popState(){
     }
     
     public void quitApp(){
