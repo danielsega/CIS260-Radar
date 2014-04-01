@@ -6,6 +6,8 @@
 
 package View;
 
+import Application.RenderUpdate;
+
 /**
  *
  * @author GW
