@@ -4,16 +4,13 @@
  */
 package Application;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author dmattos18
  */
 public class Application {
     private boolean running;
-    ArrayList<GameState> game_states;
-    
+        
     Application(){
         running = true;
     }

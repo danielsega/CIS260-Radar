@@ -10,8 +10,9 @@ package Application;
  */
 public class MainRadar {
     public static void main(String args[]) {
-        RenderUpdate renderUp = new RenderUpdate();
+        /*RenderUpdate renderUp = new RenderUpdate();
         Thread th = new Thread(renderUp);
-        th.start();  
+        th.start();  */
+        
     }
 }
