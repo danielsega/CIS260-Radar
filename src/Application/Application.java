@@ -10,8 +10,9 @@ package Application;
  */
 public class Application {
     private boolean running;
-        
+    GameStateManager gsm;
     Application(){
+        gsm = new GameStateManager();
         running = true;
     }
     
@@ -25,15 +26,6 @@ public class Application {
     public void update(){
     }
     public void draw(){
-    }
-    
-    void changeState(GameState state){
-        //
-    }
-    
-    void pushState(){
-    }
-    void popState(){
     }
     
     public void quitApp(){

@@ -18,8 +18,4 @@ public abstract class GameState {
     public abstract void handleEvents(Application app);
     public abstract void update(Application app);
     public abstract void draw(Application app);
-    
-    void changeState(Application app, GameState state){
-        app.changeState(state);
-    }
 }
