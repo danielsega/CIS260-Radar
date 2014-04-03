@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Application;
-
 /**
- *
  * @author GW
  */
+
+//--The Hearth of the Application
 class GameEngine {
 
     private boolean running;
@@ -19,6 +14,7 @@ class GameEngine {
         gsm = new GameStateManager();
     }
 
+    //--Game Loop
     public void run() {
         while (running) {
             handleEvents();
@@ -45,4 +41,4 @@ class GameEngine {
         gsm.draw();
     }
 
-}
+}//--End of Engine

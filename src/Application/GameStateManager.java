@@ -1,13 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Application;
 
 import java.util.ArrayList;
 
 /**
- *
  * @author dmattos18
  */
 public class GameStateManager {
@@ -53,4 +48,4 @@ public class GameStateManager {
     public void draw(){
         states.get(currentState).draw();
     }
-}
+}//--End Of GameStateManager

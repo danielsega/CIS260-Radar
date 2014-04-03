@@ -1,15 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Application;
 
-import java.awt.Graphics;
-
-/**
- *
- * @author dmattos18
- */
+//--IApplication is a work around Netbeans GUI Designer
+//--For not allowing to extend class from JFRAME
 public interface IApplication {
     public abstract void init();
     public abstract void cleanUp();
@@ -17,4 +9,4 @@ public interface IApplication {
     public abstract void handleEvents();
     public abstract void update();
     public abstract void draw();
-}
+}//End of IApplication

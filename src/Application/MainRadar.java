@@ -1,20 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Application;
 
-/**
- *
- * @author dmattos18
- */
+//--Main Class
 public class MainRadar {
-    
-    
-    public MainRadar() {
-        
-    }
-    
+    //--Main Thread
     public static void main(String args[]) {
         /*RenderUpdate renderUp = new RenderUpdate();
         Thread th = new Thread(renderUp);
@@ -22,4 +10,4 @@ public class MainRadar {
         GameEngine game = new GameEngine(); 
         game.run();
     }
-}
+}//--End of Main Radar
