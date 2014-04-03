@@ -1,4 +1,7 @@
 package Application;
+
+import Logic.CommandQueue;
+
 /**
  * @author GW
  */
@@ -8,6 +11,7 @@ class GameEngine {
 
     private boolean running;
     GameStateManager gsm;
+    CommandQueue mQueue;
 
     public GameEngine() {
         running = true;
@@ -17,7 +21,9 @@ class GameEngine {
     //--Game Loop
     public void run() {
         while (running) {
-            handleEvents();
+            //while(!mQueue.isEmpty()){
+                handleEvents();
+            //}
             update();
             draw();
 
