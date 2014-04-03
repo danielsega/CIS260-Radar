@@ -9,19 +9,23 @@ package View.Splash;
 import Application.IApplication;
 import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.Timer;
 
 /**
  *
  * @author GW
  */
 public class JPanelSplash extends javax.swing.JPanel implements IApplication{
-    Graphics graph;
     /**
      * Creates new form JPanelSplash
      */
+    
+    private int delay;
+    private Timer time;
+    
     public JPanelSplash() {
-        initComponents();
         init();
+        initComponents();
     }
     
     @Override
@@ -56,6 +60,8 @@ public class JPanelSplash extends javax.swing.JPanel implements IApplication{
     @Override
     public void init() {
         this.setBackground(Color.BLACK);
+        delay = 1000; //In Milliseconds
+        time = new Timer(delay, null);
     }
 
     @Override
@@ -69,10 +75,11 @@ public class JPanelSplash extends javax.swing.JPanel implements IApplication{
 
     @Override
     public void update() {
+        time.start();
     }
 
     @Override
     public void draw() {
-        paintComponent(graph);
+        this.repaint();
     }
 }

@@ -1,23 +1,22 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package View.Splash;
+package View.Menu;
 
 import Application.IApplication;
 
 /**
  *
- * @author GW
+ * @author dmattos18
  */
-public class FrameSplash extends javax.swing.JFrame implements IApplication{
+public class FrameMenu extends javax.swing.JFrame implements IApplication{
 
     /**
-     * Creates new form FrameSplash
+     * Creates new form FrameMenu
      */
-    public FrameSplash() {
+    public FrameMenu() {
+        init();
         initComponents();
     }
 
@@ -30,48 +29,26 @@ public class FrameSplash extends javax.swing.JFrame implements IApplication{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelSplash = new JPanelSplash();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanelSplash.setPreferredSize(new java.awt.Dimension(800, 600));
-
-        javax.swing.GroupLayout jPanelSplashLayout = new javax.swing.GroupLayout(jPanelSplash);
-        jPanelSplash.setLayout(jPanelSplashLayout);
-        jPanelSplashLayout.setHorizontalGroup(
-            jPanelSplashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jPanelSplashLayout.setVerticalGroup(
-            jPanelSplashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelSplash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelSplash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /*public static void main(String args[]) {
-        new FrameSplash().setVisible(true);
+/*    public static void main(String args[]) {
+                new FrameMenu().setVisible(true);
     }*/
-
-    @Override
-    public void setDefaultCloseOperation(int i) {
-        super.setDefaultCloseOperation(i); //To change body of generated methods, choose Tools | Templates.
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanelSplash;
     // End of variables declaration//GEN-END:variables
 
     @Override
