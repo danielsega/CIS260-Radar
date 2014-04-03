@@ -6,10 +6,11 @@
 
 package Logic;
 
+
 /**
  *
  * @author GW
  */
-class Command {
-    
+class Command{
+        
 }

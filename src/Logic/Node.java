@@ -4,8 +4,6 @@
  */
 package Logic;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author dmattos18

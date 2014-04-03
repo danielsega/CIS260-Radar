@@ -13,14 +13,21 @@ import java.util.Queue;
  *
  * @author GW
  */
-public class CommandQueue {
+public class CommandQueue{
     private Queue<Command> commands;
 
     public CommandQueue() {
         commands = new LinkedList<>();
     } 
     
-    public void addCommand(){
+    public boolean isEmpty(){
+        if(commands.isEmpty())
+            return true;        
+        else
+            return false;
+    }
+    
+    public void addCommand(Command input){
         
     }
 }

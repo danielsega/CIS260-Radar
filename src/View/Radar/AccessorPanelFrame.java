@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View.Radar;
 
-/**
- *
- * @author GW
- */
+//--Accessor class return a reference for Jpan
+//--It is my quick working around Netbeans GUI Designer 
+//--For not allowing us to change the variable type
 public class AccessorPanelFrame {
 
     private JpanDisplay mDisplay;
