@@ -1,13 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Application;
 
 /**
  *
  * @author dmattos18
  */
+
+//--GameState for FrameSplash
 public class StateSplash extends GameState{
 
     @Override
@@ -35,4 +33,4 @@ public class StateSplash extends GameState{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-}
+}//--End of StateSplash

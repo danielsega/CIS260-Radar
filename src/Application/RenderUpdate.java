@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Application;
 
 import View.Radar.FrameRadar;
 
 /**
- *
  * @author GW
  */
+
+//--Old render thread
 public class RenderUpdate implements Runnable {
 
     //--Constant Variables
