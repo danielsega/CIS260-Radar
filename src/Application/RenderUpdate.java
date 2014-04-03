@@ -5,7 +5,7 @@
  */
 package Application;
 
-import View.FrameRadar;
+import View.Radar.FrameRadar;
 
 /**
  *
@@ -63,7 +63,7 @@ public class RenderUpdate implements Runnable {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                fRadar.Update();
+                //fRadar.Update();
             }
         });
     }

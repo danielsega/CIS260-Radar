@@ -9,13 +9,12 @@ package Application;
  * @author dmattos18
  */
 public abstract class GameState {
-    protected GameState(){
-        
-    }
-    public abstract void Init();
+    protected GameStateManager gsm;
+    
+    public abstract void init();
     public abstract void cleanUp();
     
-    public abstract void handleEvents(Application app);
-    public abstract void update(Application app);
-    public abstract void draw(Application app);
+    public abstract void handleEvents();
+    public abstract void update();
+    public abstract void draw();
 }

@@ -12,30 +12,45 @@ import java.util.ArrayList;
  */
 public class GameStateManager {
     private ArrayList<GameState> states;
-    private GameState mState;
-    /*public enum States{
-        SPLASH, MENU, MAIN, COMBAT, CONVOY
-    }*/
+    private short currentState;
     
-    public static short SPLASH = 0;
-    public static short MENU = 1;    
-    public static short MAIN = 2;    
-    public static short COMBAT = 3;    
-    public static short CONVOY = 4;
+    public static class StatesID{      
+        public final static short SPLASH = 0;
+        public final static short MENU = 1;
+        public final static short GAME = 2;
+        public final static short COMABT = 3;
+        public final static short CONVOY = 4;
+    }
     
     public GameStateManager() {
+        states = new ArrayList<>();        
         
+        currentState = StatesID.SPLASH;
+        states.add(new StateMainGame());
     }
        
-    public void changeState(GameState state){
-        mState = state;
+    public void changeState(short id){
+        currentState = id;
+        states.get(id).init();
     }
     
     public void pushState(GameState state){
         this.states.add(state);
     }
     
-    public void popState(){
-        this.states.clear();
+    public void popState(short id){
+        this.states.remove(id);
+    }
+    
+    public void handleEvents(){
+        this.states.get(currentState).handleEvents();
+    }
+    
+    public void update(){
+        states.get(currentState).update();
+    }
+    
+    public void draw(){
+        states.get(currentState).draw();
     }
 }

@@ -9,10 +9,17 @@ package Application;
  * @author dmattos18
  */
 public class MainRadar {
+    
+    
+    public MainRadar() {
+        
+    }
+    
     public static void main(String args[]) {
         /*RenderUpdate renderUp = new RenderUpdate();
         Thread th = new Thread(renderUp);
         th.start();  */
-        
+        GameEngine game = new GameEngine(); 
+        game.run();
     }
 }

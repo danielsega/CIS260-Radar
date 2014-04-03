@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package View.Radar;
 
+import Application.IApplication;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -18,18 +19,18 @@ import javax.imageio.*;
  *
  * @author dmattos18
  */
-public class JpanDisplay extends javax.swing.JPanel {
+public class JpanDisplay extends javax.swing.JPanel implements IApplication{
 //--Example: http://zetcode.com/tutorials/javaswingtutorial/painting/
-    
-    BufferedImage mWater;
-    TexturePaint mWaterTexture;
+    private BufferedImage mWater;
+    private TexturePaint mWaterTexture;
 
+    private int deltax;
     /**
      * Creates new form jpanDisplay
      */
     public JpanDisplay(){
-        initComponents();
-        loadImages();
+        init();
+        initComponents();        
     }
 
     @Override
@@ -38,20 +39,10 @@ public class JpanDisplay extends javax.swing.JPanel {
         super.paintComponent(graph);
         Graphics2D g2d = (Graphics2D) graph;
         
-        mWaterTexture = new TexturePaint(mWater, new Rectangle(0,0,mWater.getWidth() / 2,mWater.getHeight() / 2)); 
+        mWaterTexture = new TexturePaint(mWater, new Rectangle(deltax,0,mWater.getWidth() / 4,mWater.getHeight() / 4)); 
         
         g2d.setPaint(mWaterTexture);
         g2d.fillRect(0, 0, this.getWidth(),this.getHeight());
-    }
-    //--This will load image into the buffered image
-    private void loadImages()
-    {
-        try {
-            mWater = ImageIO.read(this.getClass().getResource("/Assets/water-texture.jpg"));
-        } catch (IOException ex) {
-            Logger.getLogger(JpanDisplay.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,4 +66,37 @@ public class JpanDisplay extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void init() {
+        try {
+            mWater = ImageIO.read(this.getClass().getResource("/Assets/water-texture.jpg"));
+        } catch (IOException ex) {
+            Logger.getLogger(JpanDisplay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        deltax = 0;
+    }
+
+    @Override
+    public void cleanUp() {
+    }
+
+    @Override
+    public void handleEvents() {
+        
+    }
+
+    public void update() {
+        deltax++;
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void draw() {
+        this.repaint();
+    }
+
 }

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package View.Radar;
 
+import Application.IApplication;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -12,20 +13,26 @@ import java.awt.Graphics;
  *
  * @author GW
  */
-public class JpanRadar extends javax.swing.JPanel 
-    {
+public class JpanRadar extends javax.swing.JPanel implements IApplication{
     //--House Keeping
+    IApplication app;
+    Graphics g;
+            
     private Color darkGreen;
+    private Color yellow;
     private double angle;
     double deltax;
     double deltay;
-    int degrees;
+    double degrees;
     final int RADAR_SPPED = 5;
+    
+    
     public JpanRadar() 
     {
         initComponents();
         this.setBackground(Color.black);
         darkGreen = new Color(131, 179, 131);
+        yellow = new Color(230, 230, 0);
         deltax = 0;
         deltay = 0;
     }
@@ -40,15 +47,17 @@ public class JpanRadar extends javax.swing.JPanel
         graph.drawOval(60, 60, getWidth() - 120 , getHeight() - 120);
         graph.drawOval(110, 110, getWidth() - 220 , getHeight() - 220);
         
+        graph.setColor(yellow);
         graph.drawLine(this.getWidth() / 2, this.getHeight() / 2, (int)deltax, (int) deltay);
         
     }
     
-    public void Update(){
-        /*degrees = ( ++degrees%360 == 0 ) ? 0 : degrees;
-        angle = Math.toRadians(degrees);
-        deltax = (Math.cos(angle) * deltax - Math.sin(angle) * deltay) + 100;
-        deltay = (Math.sin(angle) * deltax + Math.cos(angle) * deltay) + 100;
+    @Override
+    public void update(){
+        degrees = ( ++degrees%360 == 0 ) ? 0 : degrees;
+        /*angle = Math.toRadians(degrees);
+        deltax = (getWidth() / 2) + (Math.cos(angle) * (deltax - (getWidth() / 2)) - Math.sin(angle) * (deltay - (getWidth() / 2))) + 100;
+        deltay = (getHeight() /2) + (Math.sin(angle) * (deltax - (getHeight() /2)) + Math.cos(angle) * (deltay - (getHeight() /2))) + 100;
         
         System.out.println("X: " + deltax);
         System.out.println("Y: " + deltay);
@@ -61,13 +70,12 @@ public class JpanRadar extends javax.swing.JPanel
         else if(deltax >= getWidth() && deltay >= 0 && deltay < getHeight()){
             deltay+=RADAR_SPPED;
         }
-        else if(deltax <= getWidth() && deltax >= 0 && deltay >= getHeight()){
+        else if(deltax <= getWidth() && deltax > 0 && deltay >= getHeight()){
             deltax-=RADAR_SPPED;
         }
-        else if(deltax <= 0 && deltay <= getHeight()){
-            deltax = 0;
+        else if(/*deltax <= 0 && deltay <= getHeight() &&*/ deltay >= 0){
             deltay-=RADAR_SPPED;
-        }
+        }        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,4 +101,24 @@ public class JpanRadar extends javax.swing.JPanel
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void init() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void cleanUp() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void handleEvents() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void draw() {
+        this.repaint();
+    }
 }

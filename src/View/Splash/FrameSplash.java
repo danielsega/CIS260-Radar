@@ -1,12 +1,14 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+
+package View.Splash;
 
 /**
  *
- * @author dmattos18
+ * @author GW
  */
 public class FrameSplash extends javax.swing.JFrame {
 
@@ -26,17 +28,32 @@ public class FrameSplash extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelSplash = new JPanelSplash();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanelSplash.setPreferredSize(new java.awt.Dimension(800, 600));
+
+        javax.swing.GroupLayout jPanelSplashLayout = new javax.swing.GroupLayout(jPanelSplash);
+        jPanelSplash.setLayout(jPanelSplashLayout);
+        jPanelSplashLayout.setHorizontalGroup(
+            jPanelSplashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanelSplashLayout.setVerticalGroup(
+            jPanelSplashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanelSplash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanelSplash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -76,6 +93,13 @@ public class FrameSplash extends javax.swing.JFrame {
             }
         });
     }
+
+    @Override
+    public void setDefaultCloseOperation(int i) {
+        super.setDefaultCloseOperation(i); //To change body of generated methods, choose Tools | Templates.
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanelSplash;
     // End of variables declaration//GEN-END:variables
 }

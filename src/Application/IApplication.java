@@ -4,15 +4,17 @@
  */
 package Application;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author dmattos18
  */
 public interface IApplication {
-    public void Init();
-    public void cleanUp();
+    public abstract void init();
+    public abstract void cleanUp();
     
-    public void handleEvents();
-    public void update();
-    public void draw();
+    public abstract void handleEvents();
+    public abstract void update();
+    public abstract void draw();
 }
