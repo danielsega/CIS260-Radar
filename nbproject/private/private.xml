@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/GW/Documents/NetBeansProjects/Radar%20Simulation/src/View/JpanDisplay.java</file>
+            <file>file:/C:/Users/GW/Documents/NetBeansProjects/CIS260-Radar/src/Logic/CommandManager.java</file>
+            <file>file:/C:/Users/GW/Documents/NetBeansProjects/CIS260-Radar/src/Logic/Command.java</file>
+            <file>file:/C:/Users/GW/Documents/NetBeansProjects/CIS260-Radar/src/View/Radar/FrameRadar.java</file>
+            <file>file:/C:/Users/GW/Documents/NetBeansProjects/CIS260-Radar/src/Application/GameEngine.java</file>
         </group>
     </open-files>
 </project-private>

@@ -39,7 +39,6 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
         jpanDisplay = mAccessor.getmDisplay();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
 
         javax.swing.GroupLayout jpanRadarLayout = new javax.swing.GroupLayout(jpanRadar);
         jpanRadar.setLayout(jpanRadarLayout);
@@ -58,18 +57,18 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
         jpanControl.setLayout(jpanControlLayout);
         jpanControlLayout.setHorizontalGroup(
             jpanControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 759, Short.MAX_VALUE)
+            .addGap(0, 821, Short.MAX_VALUE)
         );
         jpanControlLayout.setVerticalGroup(
             jpanControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 217, Short.MAX_VALUE)
+            .addGap(0, 253, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jpanDisplayLayout = new javax.swing.GroupLayout(jpanDisplay);
         jpanDisplay.setLayout(jpanDisplayLayout);
         jpanDisplayLayout.setHorizontalGroup(
             jpanDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGap(0, 527, Short.MAX_VALUE)
         );
         jpanDisplayLayout.setVerticalGroup(
             jpanDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

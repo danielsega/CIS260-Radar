@@ -6,11 +6,18 @@
 
 package Logic;
 
-
 /**
+ *
  * @author GW
  */
-abstract class Command{
-    public abstract void execute();
+public class CommandManager {
+    
+    Command battleMode;
+    
+    CommandManager(){
+        
+    }
+    
+    public void handleInput(){
+    }
 }
-

@@ -21,9 +21,7 @@ class GameEngine {
     //--Game Loop
     public void run() {
         while (running) {
-            //while(!mQueue.isEmpty()){
-                handleEvents();
-            //}
+            handleEvents();
             update();
             draw();
 
