@@ -39,7 +39,7 @@ public class JpanDisplay extends javax.swing.JPanel implements IApplication{
         super.paintComponent(graph);
         Graphics2D g2d = (Graphics2D) graph;
         
-        mWaterTexture = new TexturePaint(mWater, new Rectangle(deltax,0,mWater.getWidth() / 4,mWater.getHeight() / 4)); 
+        mWaterTexture = new TexturePaint(mWater, new Rectangle(deltax,0,mWater.getWidth()/2,mWater.getHeight())); 
         
         g2d.setPaint(mWaterTexture);
         g2d.fillRect(0, 0, this.getWidth(),this.getHeight());
@@ -70,7 +70,7 @@ public class JpanDisplay extends javax.swing.JPanel implements IApplication{
     @Override
     public void init() {
         try {
-            mWater = ImageIO.read(this.getClass().getResource("/Assets/water-texture.jpg"));
+            mWater = ImageIO.read(this.getClass().getResource("/Assets/water.jpg"));
         } catch (IOException ex) {
             Logger.getLogger(JpanDisplay.class.getName()).log(Level.SEVERE, null, ex);
         }
