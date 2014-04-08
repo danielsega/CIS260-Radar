@@ -5,6 +5,7 @@
 package View.Radar;
 
 import Application.IApplication;
+import Logic.Sprite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -23,7 +24,7 @@ public class JpanDisplay extends javax.swing.JPanel implements IApplication{
 //--Example: http://zetcode.com/tutorials/javaswingtutorial/painting/
     private BufferedImage mWater;
     private TexturePaint mWaterTexture;
-
+    private Sprite submarine;
     private int deltax;
     /**
      * Creates new form jpanDisplay
@@ -75,6 +76,7 @@ public class JpanDisplay extends javax.swing.JPanel implements IApplication{
             Logger.getLogger(JpanDisplay.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        submarine = new Sprite("sub.png");
         deltax = 0;
     }
 
@@ -89,6 +91,7 @@ public class JpanDisplay extends javax.swing.JPanel implements IApplication{
 
     public void update() {
         deltax++;
+        submarine.getRec().setLocation(deltax, 0);
     }
 
     /**

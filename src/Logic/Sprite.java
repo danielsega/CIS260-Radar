@@ -7,6 +7,7 @@ package Logic;
 
 import java.awt.Rectangle;
 import java.awt.TexturePaint;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -18,15 +19,26 @@ import javax.imageio.ImageIO;
  * @author GW
  */
 public class Sprite {
+    private AffineTransformOp at;
+    private BufferedImage mBufferedImage;
+    private TexturePaint mTexturePaint;
+    private Rectangle rec;
 
-    private BufferedImage mWater;
-    private TexturePaint mWaterTexture;
+    public BufferedImage getmBufferedImage() {
+        return mBufferedImage;
+    }
+
+    public void setmBufferedImage(BufferedImage mWater) {
+        this.mBufferedImage = mWater;
+    }
 
     private String fileName;
     private int x;
     private int y;
+    private int width;
+    private int heigh;
 
-    Sprite(String name) {
+    public Sprite(String name) {
         x = 0;
         y = 0;
         fileName = "/Assets/" + name;
@@ -35,11 +47,14 @@ public class Sprite {
 
     private void init() {
         try {
-            mWater = ImageIO.read(this.getClass().getResource(fileName));
+            mBufferedImage = ImageIO.read(this.getClass().getResource(fileName));
         } catch (IOException ex) {
             Logger.getLogger(Sprite.class.getName()).log(Level.SEVERE, null, ex);
         }
-        mWaterTexture = new TexturePaint(mWater, new Rectangle(x, y, mWater.getWidth(), mWater.getHeight()));
+        width = mBufferedImage.getWidth();
+        heigh = mBufferedImage.getHeight();
+
+        mTexturePaint = new TexturePaint(mBufferedImage, rec);
 
     }
 
@@ -59,7 +74,31 @@ public class Sprite {
         this.y = y;
     }
 
-    public TexturePaint getmWaterTexture() {
-        return mWaterTexture;
+    public TexturePaint getmTexturePaint() {
+        return mTexturePaint;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeigh() {
+        return heigh;
+    }
+
+    public void setHeigh(int heigh) {
+        this.heigh = heigh;
+    }
+    
+    public Rectangle getRec() {
+        return rec;
+    }
+
+    public void setRec(Rectangle rec) {
+        this.rec = rec;
     }
 }

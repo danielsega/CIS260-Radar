@@ -4,49 +4,35 @@
  */
 package Logic;
 
+import java.awt.geom.Point2D;
+
 /**
  *
  * @author dmattos18
  */
 public class Entity {
-    private Vector2d mVelocity;
-    private Vector2d mPosition;
-    //Damage
-    //HP
+    Point2D position;
+    Point2D velocity;
     
     Entity()
     {
+        position = new Point2D.Float(0, 0);
+        velocity = new Point2D.Float(0, 0);
     }
     
-    public void setVelocity(float x, float y)
-    {
-        mVelocity.setX(x);
-        mVelocity.setY(y);
+    public Point2D getPosition() {
+        return position;
     }
-    
-    public void setVelocity(Vector2d vec)
-    {
-        mVelocity = vec;
+
+    public void setPosition(Point2D position) {
+        this.position = position;
     }
-    
-    public Vector2d getVelocity()
-    {
-        return mVelocity;
+
+    public Point2D getVelocity() {
+        return velocity;
     }
-    
-    public void setPosition(float x, float y)
-    {
-        mPosition.setX(x);
-        mPosition.setY(y);
-    }
-    
-    public void setPosition(Vector2d vec)
-    {
-        mVelocity = vec;
-    }
-    
-    public Vector2d getPosition()
-    {
-        return mPosition;
+
+    public void setVelocity(Point2D velocity) {
+        this.velocity = velocity;
     }
 }
