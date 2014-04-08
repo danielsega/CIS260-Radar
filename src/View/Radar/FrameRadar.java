@@ -99,6 +99,9 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
         jpanDisplay = mAccessor.getmDisplay();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Marine Radar");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setName("FrameRadar"); // NOI18N
 
         javax.swing.GroupLayout jpanRadarLayout = new javax.swing.GroupLayout(jpanRadar);
         jpanRadar.setLayout(jpanRadarLayout);
@@ -113,7 +116,6 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
 
         jpanControl.setBorder(javax.swing.BorderFactory.createTitledBorder("Controll Panel"));
 
-        jPanelSub.setBackground(new java.awt.Color(51, 255, 204));
         jPanelSub.setBorder(javax.swing.BorderFactory.createTitledBorder("Submersion"));
 
         jsliderSub.setOrientation(javax.swing.JSlider.VERTICAL);
@@ -135,7 +137,6 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
                 .addContainerGap())
         );
 
-        jPanelBattle.setBackground(new java.awt.Color(153, 255, 204));
         jPanelBattle.setBorder(javax.swing.BorderFactory.createTitledBorder("Battle Phase"));
 
         jtoggleBatleMode.setText("Battle Mode");
@@ -310,7 +311,6 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
                 .addGap(99, 99, 99))
         );
 
-        jPanelInstruc.setBackground(new java.awt.Color(204, 255, 204));
         jPanelInstruc.setBorder(javax.swing.BorderFactory.createTitledBorder("Instructional"));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HQ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
@@ -437,7 +437,6 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
                 .addContainerGap())
         );
 
-        jPanelProgress.setBackground(new java.awt.Color(102, 255, 204));
         jPanelProgress.setBorder(javax.swing.BorderFactory.createTitledBorder("Progress"));
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Scenario", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
@@ -680,6 +679,8 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
                 .addComponent(jpanControl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        getAccessibleContext().setAccessibleDescription("A submarine radar simulation");
 
         pack();
         setLocationRelativeTo(null);

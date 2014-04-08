@@ -44,6 +44,7 @@ public class JpanDisplay extends javax.swing.JPanel implements IApplication{
         
         g2d.setPaint(mWaterTexture);
         g2d.fillRect(0, 0, this.getWidth(),this.getHeight());
+        g2d.drawImage(submarine.getImage(), submarine.getAt(), this);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,9 +90,9 @@ public class JpanDisplay extends javax.swing.JPanel implements IApplication{
         
     }
 
+    @Override
     public void update() {
         deltax++;
-        submarine.getRec().setLocation(deltax, 0);
     }
 
     /**

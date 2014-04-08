@@ -5,9 +5,8 @@
  */
 package Logic;
 
-import java.awt.Rectangle;
-import java.awt.TexturePaint;
-import java.awt.image.AffineTransformOp;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -18,29 +17,14 @@ import javax.imageio.ImageIO;
  *
  * @author GW
  */
-public class Sprite {
-    private AffineTransformOp at;
+public class Sprite extends Entity {
+
+    private Image image;
+    private AffineTransform at;
     private BufferedImage mBufferedImage;
-    private TexturePaint mTexturePaint;
-    private Rectangle rec;
-
-    public BufferedImage getmBufferedImage() {
-        return mBufferedImage;
-    }
-
-    public void setmBufferedImage(BufferedImage mWater) {
-        this.mBufferedImage = mWater;
-    }
-
     private String fileName;
-    private int x;
-    private int y;
-    private int width;
-    private int heigh;
 
     public Sprite(String name) {
-        x = 0;
-        y = 0;
         fileName = "/Assets/" + name;
         init();
     }
@@ -51,54 +35,19 @@ public class Sprite {
         } catch (IOException ex) {
             Logger.getLogger(Sprite.class.getName()).log(Level.SEVERE, null, ex);
         }
-        width = mBufferedImage.getWidth();
-        heigh = mBufferedImage.getHeight();
-
-        mTexturePaint = new TexturePaint(mBufferedImage, rec);
-
+        image = mBufferedImage;
+        at = new AffineTransform();
     }
 
-    public int getX() {
-        return x;
+    public Image getImage() {
+        return image;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public BufferedImage getmBufferedImage() {
+        return mBufferedImage;
     }
 
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public TexturePaint getmTexturePaint() {
-        return mTexturePaint;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeigh() {
-        return heigh;
-    }
-
-    public void setHeigh(int heigh) {
-        this.heigh = heigh;
-    }
-    
-    public Rectangle getRec() {
-        return rec;
-    }
-
-    public void setRec(Rectangle rec) {
-        this.rec = rec;
+    public AffineTransform getAt() {
+        return at;
     }
 }
