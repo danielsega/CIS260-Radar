@@ -8,40 +8,36 @@ package Logic;
  *
  * @author dmattos18
  */
-public abstract class Node{
+public class Node{
     //--Data Members
     private Node mParent;
     private Node mChildren;
-    private int nodeID;
-    private static int IDCounter;
-    
-    Node()
-    {
-        IDCounter = 0;
-        mParent = null;
-        mChildren = null;
+    private Command command;
+        
+    Node(){
     }
     
-    public void attachChild(Node child)
-    {
-        IDCounter++;
-        child.mParent = this;
-        child.nodeID = Node.IDCounter;
-        mChildren = child;
-    }
-    
-    public void dettachChild(Node child)
-    {
+    public void attachChild(){
         
     }
     
-    public void update(/*Delta time*/)
-    {
+    public void dettachChild(){
+    
+    }
+    
+    public void update(){
         
     }
     
-    public void draw()
-    {
+    public void updateChildren(){
+        
+    }
+    
+    public void draw(){
+        
+    }
+    
+    public void drawChildren(){
         
     }
 }

@@ -77,7 +77,7 @@ public class JpanDisplay extends javax.swing.JPanel implements IApplication{
             Logger.getLogger(JpanDisplay.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        submarine = new Sprite("sub.png");
+        submarine = new Sprite("sub.png", 200);
         deltax = 0;
     }
 

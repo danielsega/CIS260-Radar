@@ -17,14 +17,14 @@ import javax.imageio.ImageIO;
  *
  * @author GW
  */
-public class Sprite extends Entity {
+public class Sprite{
 
     private Image image;
     private AffineTransform at;
     private BufferedImage mBufferedImage;
     private String fileName;
 
-    public Sprite(String name) {
+    public Sprite(String name, int hp) {
         fileName = "/Assets/" + name;
         init();
     }
