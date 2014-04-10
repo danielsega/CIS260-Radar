@@ -12,25 +12,7 @@ package Logic;
  */
 
 //--COMMAND INTERFACE
-interface Command{
+public interface ICommand{
     void action();
     void undo();
-}
-
-//-- -------------COMMAND INHERETANCES------------------
-
-public class FireMissile implements Command{
-
-    FireMissile(/*DEVICES*/){
-        
-    }
-    
-    @Override
-    public void action() {
-    }
-
-    @Override
-    public void undo() {
-    }
-    
 }

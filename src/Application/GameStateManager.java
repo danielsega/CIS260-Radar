@@ -10,17 +10,17 @@ public class GameStateManager {
     private short currentState;
     
     public static class StatesID{      
-        public final static short SPLASH = 0;
+        public final static short GAME = 0;
         public final static short MENU = 1;
-        public final static short GAME = 2;
+        public final static short SPLASH = 2;
         public final static short COMABT = 3;
         public final static short CONVOY = 4;
     }
     
     public GameStateManager() {
-        states = new ArrayList<>();        
+        states = new ArrayList<>();       
         
-        currentState = StatesID.SPLASH;
+        currentState = StatesID.GAME;
         states.add(new StateMainGame());
     }
        

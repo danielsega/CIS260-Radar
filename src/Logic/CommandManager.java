@@ -6,18 +6,21 @@
 
 package Logic;
 
-/**
- *
- * @author GW
- */
+//Invoker
 public class CommandManager {
+    ICommand command;
+    ICommand lastCommand;
     
-    Command battleMode;
-    
-    CommandManager(){
-        
+    public void setCommand(ICommand c){
+        command = c;
     }
     
-    public void handleInput(){
+    public void executeCommnad(){
+        command.action();
+        lastCommand = command;                
+    }
+    
+    public void undo(){
+        lastCommand.action();
     }
 }

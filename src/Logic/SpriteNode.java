@@ -17,14 +17,14 @@ import javax.imageio.ImageIO;
  *
  * @author GW
  */
-public class Sprite{
+public class SpriteNode extends SceneNode{
 
     private Image image;
     private AffineTransform at;
     private BufferedImage mBufferedImage;
     private String fileName;
 
-    public Sprite(String name, int hp) {
+    public SpriteNode(String name, int hp) {
         fileName = "/Assets/" + name;
         init();
     }
@@ -33,7 +33,7 @@ public class Sprite{
         try {
             mBufferedImage = ImageIO.read(this.getClass().getResource(fileName));
         } catch (IOException ex) {
-            Logger.getLogger(Sprite.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SpriteNode.class.getName()).log(Level.SEVERE, null, ex);
         }
         image = mBufferedImage;
         at = new AffineTransform();

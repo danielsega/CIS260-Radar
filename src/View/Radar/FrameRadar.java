@@ -6,6 +6,8 @@
 package View.Radar;
 
 import Application.IApplication;
+import Logic.CommandManager;
+import Logic.Commands.FireMissiles;
 
 /**
  *
@@ -15,8 +17,9 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
     public static final String TITLE = "Radar Simulation: ";
     public static final String VERSION = "1.0";
     //--Object that creates and access jpanels
-    AccessorPanelFrame mAccessor;
-    
+    private AccessorPanelFrame mAccessor;
+    public CommandManager commandMgr;
+        
     /**
      * Creates new form FrameRadar
      */
@@ -71,7 +74,7 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
         jbutHalt = new javax.swing.JButton();
         jPanelProgress = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jprogScenario = new javax.swing.JProgressBar();
+        jprogScenario = new javax.swing.JProgressBar(0,100);
         jlblDisplay = new javax.swing.JLabel();
         jlblDisplay2 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -154,6 +157,11 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
 
         jbutMissile1.setText("Missile 1");
         jbutMissile1.setEnabled(false);
+        jbutMissile1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutMissile1ActionPerformed(evt);
+            }
+        });
 
         jbutMissile2.setText("Missile 2");
         jbutMissile2.setEnabled(false);
@@ -316,10 +324,13 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HQ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jlblHQ2.setText("HQ2");
+        jlblHQ2.setFocusable(false);
 
         jlblHQ1.setText("HQ1");
+        jlblHQ1.setFocusable(false);
 
         jlblHQ3.setText("HQ3");
+        jlblHQ3.setFocusable(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -443,9 +454,11 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
 
         jlblDisplay.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jlblDisplay.setText("+ Display Text");
+        jlblDisplay.setFocusable(false);
 
         jlblDisplay2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jlblDisplay2.setText("+ Display Text");
+        jlblDisplay2.setFocusable(false);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -473,24 +486,31 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Missile 1");
+        jLabel2.setFocusable(false);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Missile 2");
+        jLabel5.setFocusable(false);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Missile 4");
+        jLabel7.setFocusable(false);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Missile 3");
+        jLabel6.setFocusable(false);
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Missile 5");
+        jLabel8.setFocusable(false);
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Missile 6");
+        jLabel9.setFocusable(false);
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Bassistic Missiles");
+        jLabel10.setFocusable(false);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -557,12 +577,15 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Flare");
+        jLabel1.setFocusable(false);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Signal");
+        jLabel14.setFocusable(false);
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Instructions");
+        jLabel15.setFocusable(false);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -713,6 +736,11 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
         }
     }//GEN-LAST:event_jtoggleBatleModeActionPerformed
 
+    private void jbutMissile1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutMissile1ActionPerformed
+        commandMgr.setCommand(new FireMissiles(null));
+        commandMgr.executeCommnad();
+    }//GEN-LAST:event_jbutMissile1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -782,6 +810,7 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
     @Override
     public void init() {
         mAccessor = new AccessorPanelFrame();
+        commandMgr = new CommandManager();
         this.setTitle(TITLE + VERSION);
     }
 

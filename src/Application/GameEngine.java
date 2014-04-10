@@ -1,7 +1,5 @@
 package Application;
 
-import Logic.CommandQueue;
-
 /**
  * @author GW
  */
@@ -9,9 +7,8 @@ import Logic.CommandQueue;
 //--The Hearth of the Application
 class GameEngine {
 
-    private boolean running;
+    private final boolean running;
     GameStateManager gsm;
-    CommandQueue mQueue;
 
     public GameEngine() {
         running = true;

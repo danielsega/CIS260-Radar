@@ -10,7 +10,7 @@ import java.awt.geom.Point2D;
  *
  * @author dmattos18
  */
-public class Entity extends Node{
+public class Entity extends SceneNode{
     private int hp;
 
     private Point2D position;
@@ -38,10 +38,7 @@ public class Entity extends Node{
     }
     
     final boolean isDestroyed(){
-        if(hp <= 0)
-            return true;
-        else 
-            return false;
+        return hp <= 0;
     }
     
     public void update(){
