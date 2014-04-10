@@ -11,10 +11,17 @@ import java.awt.geom.Point2D;
  * @author dmattos18
  */
 public class Entity extends SceneNode{
+    //--Stats
     private int hp;
 
     private Point2D position;
     private Point2D velocity;
+
+    public Entity() {
+        hp = 0;
+        position = new Point2D.Float(0, 0);
+        velocity = new Point2D.Float(0, 0);
+    }
     
     Entity(int hitpoints)
     {

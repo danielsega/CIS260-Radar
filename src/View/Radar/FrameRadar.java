@@ -6,8 +6,9 @@
 package View.Radar;
 
 import Application.IApplication;
+import Application.Scenario;
 import Logic.CommandManager;
-import Logic.Commands.FireMissiles;
+import javax.swing.JSlider;
 
 /**
  *
@@ -18,7 +19,7 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
     public static final String VERSION = "1.0";
     //--Object that creates and access jpanels
     private AccessorPanelFrame mAccessor;
-    public CommandManager commandMgr;
+    private Scenario scenario;
         
     /**
      * Creates new form FrameRadar
@@ -122,6 +123,11 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
         jPanelSub.setBorder(javax.swing.BorderFactory.createTitledBorder("Submersion"));
 
         jsliderSub.setOrientation(javax.swing.JSlider.VERTICAL);
+        jsliderSub.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jsliderSubStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelSubLayout = new javax.swing.GroupLayout(jPanelSub);
         jPanelSub.setLayout(jPanelSubLayout);
@@ -737,9 +743,16 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
     }//GEN-LAST:event_jtoggleBatleModeActionPerformed
 
     private void jbutMissile1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutMissile1ActionPerformed
-        commandMgr.setCommand(new FireMissiles(null));
-        commandMgr.executeCommnad();
     }//GEN-LAST:event_jbutMissile1ActionPerformed
+
+    private void jsliderSubStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsliderSubStateChanged
+       JSlider source = (JSlider)evt.getSource();
+        if (!source.getValueIsAdjusting()) {
+            //String text = String.valueOf(source.getValue());
+            //jlblDisplay.setText(text); 
+            jprogScenario.setValue(source.getValue());
+        }
+    }//GEN-LAST:event_jsliderSubStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -810,7 +823,6 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
     @Override
     public void init() {
         mAccessor = new AccessorPanelFrame();
-        commandMgr = new CommandManager();
         this.setTitle(TITLE + VERSION);
     }
 

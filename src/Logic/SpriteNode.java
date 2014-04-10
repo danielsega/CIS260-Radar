@@ -17,32 +17,43 @@ import javax.imageio.ImageIO;
  *
  * @author GW
  */
-public class SpriteNode extends SceneNode{
+public class SpriteNode extends Entity {
 
     private Image image;
     private AffineTransform at;
     private BufferedImage mBufferedImage;
     private String fileName;
-    
+
+    public SpriteNode() {
+        init();
+    }
+
     public SpriteNode(String name) {
         fileName = "/Assets/" + name;
         init();
     }
 
     private void init() {
-        try {
-            mBufferedImage = ImageIO.read(this.getClass().getResource(fileName));
-        } catch (IOException ex) {
-            Logger.getLogger(SpriteNode.class.getName()).log(Level.SEVERE, null, ex);
+        if (!fileName.isEmpty()) {
+            try {
+                mBufferedImage = ImageIO.read(this.getClass().getResource(fileName));
+            } catch (IOException ex) {
+                Logger.getLogger(SpriteNode.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            image = mBufferedImage;
+        } else {
+            mBufferedImage = new BufferedImage(50, 50, 1);
+            image = mBufferedImage;
         }
-        image = mBufferedImage;
+        
         at = new AffineTransform();
     }
-    
-    public void setName(String name){
+
+    public void setName(String name) {
         fileName = name;
     }
-    
+
     public Image getImage() {
         return image;
     }

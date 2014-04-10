@@ -3,24 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Logic;
 
 //Invoker
 public class CommandManager {
+    CommandQueue mQueue;
     ICommand command;
     ICommand lastCommand;
+
+    public CommandManager(CommandQueue queue) {
+        mQueue = queue;
+    }
+
+    public void HandleCommands(){
+        while(!mQueue.isEmpty()){
+            assert(mQueue.pool() != null);
+            command = mQueue.pool();
+            command.action();
+            lastCommand = command;
+        }
+    }
     
-    public void setCommand(ICommand c){
+    public void setCommand(ICommand c) {
         command = c;
     }
-    
-    public void executeCommnad(){
+
+    public void executeCommnad() {
         command.action();
-        lastCommand = command;                
+        lastCommand = command;
     }
-    
-    public void undo(){
+
+    public void undo() {
         lastCommand.action();
     }
 }

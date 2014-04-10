@@ -152,6 +152,9 @@
               <Properties>
                 <Property name="orientation" type="int" value="1"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jsliderSubStateChanged"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

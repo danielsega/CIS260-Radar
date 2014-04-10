@@ -6,18 +6,18 @@
 
 package Logic.Commands;
 
+import Application.GameObject.Missile;
 import Logic.ICommand;
-import Logic.Entity;
 
 /**
  *
  * @author GW
  */
 public class FireMissiles implements ICommand{
-    Entity mEntity;
+    Missile mMissile;
     
-    public FireMissiles(Entity entity) {
-        mEntity = entity;
+    public FireMissiles(Missile missile) {
+        mMissile = missile;
     }
     
     @Override
