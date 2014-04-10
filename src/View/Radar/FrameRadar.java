@@ -824,6 +824,7 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
     public void init() {
         mAccessor = new AccessorPanelFrame();
         this.setTitle(TITLE + VERSION);
+        scenario = Scenario.getInstance();
     }
 
     @Override

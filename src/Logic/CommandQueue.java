@@ -14,11 +14,11 @@ import java.util.Queue;
 public class CommandQueue {
     private Queue<ICommand> mQueue;
     
-    CommandQueue(){
+    public CommandQueue(){
         mQueue = new LinkedList<ICommand>();
     }
     
-    CommandQueue(ICommand command){
+    public CommandQueue(ICommand command){
         mQueue = new LinkedList<ICommand>();
         mQueue.add(command);
     }

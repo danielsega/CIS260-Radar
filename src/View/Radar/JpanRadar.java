@@ -27,7 +27,7 @@ public class JpanRadar extends javax.swing.JPanel implements IApplication{
     final int RADAR_SPPED = 5;
     
     
-    public JpanRadar() 
+    public JpanRadar(Scenario scenario) 
     {
         initComponents();
         this.setBackground(Color.black);

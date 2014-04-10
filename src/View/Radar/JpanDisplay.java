@@ -29,7 +29,7 @@ public class JpanDisplay extends javax.swing.JPanel implements IApplication{
     /**
      * Creates new form jpanDisplay
      */
-    public JpanDisplay(){
+    public JpanDisplay(Scenario scenario){
         init();
         initComponents();        
     }
