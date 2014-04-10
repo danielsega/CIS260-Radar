@@ -23,8 +23,8 @@ public class SpriteNode extends SceneNode{
     private AffineTransform at;
     private BufferedImage mBufferedImage;
     private String fileName;
-
-    public SpriteNode(String name, int hp) {
+    
+    public SpriteNode(String name) {
         fileName = "/Assets/" + name;
         init();
     }
@@ -38,7 +38,11 @@ public class SpriteNode extends SceneNode{
         image = mBufferedImage;
         at = new AffineTransform();
     }
-
+    
+    public void setName(String name){
+        fileName = name;
+    }
+    
     public Image getImage() {
         return image;
     }
