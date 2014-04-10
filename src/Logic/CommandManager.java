@@ -17,7 +17,11 @@ public class CommandManager {
 
     public void HandleCommands(){
         while(!mQueue.isEmpty()){
-            assert(mQueue.pool() != null);
+            
+            if(mQueue.peek() == null){
+                mQueue.removeHead();
+            }
+            
             command = mQueue.pool();
             command.action();
             lastCommand = command;
