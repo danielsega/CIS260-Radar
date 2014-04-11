@@ -639,21 +639,33 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Backward"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbutBackActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jbutForward">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Forward"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbutForwardActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jbutMove">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="MOVE"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbutMoveActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jbutHalt">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="HALT"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbutHaltActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

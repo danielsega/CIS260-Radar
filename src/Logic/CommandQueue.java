@@ -12,32 +12,32 @@ import java.util.Queue;
  * @author dmattos18
  */
 public class CommandQueue {
-    private Queue<ICommand> mQueue;
+    private Queue<Command> mQueue;
     
     public CommandQueue(){
-        mQueue = new LinkedList<ICommand>();
+        mQueue = new LinkedList<Command>();
     }
     
-    public CommandQueue(ICommand command){
-        mQueue = new LinkedList<ICommand>();
+    public CommandQueue(Command command){
+        mQueue = new LinkedList<Command>();
         mQueue.add(command);
     }
     
-    public void add(ICommand c){
+    public void add(Command c){
         mQueue.add(c);
     }
     
     //--Retries and Remove
-    public ICommand pool(){
+    public Command pool(){
         return mQueue.poll();
     }
     
     //--Retrieves and does not remove
-    public ICommand peek(){
+    public Command peek(){
         return mQueue.peek();
     }
     
-    public void remove(ICommand c){
+    public void remove(Command c){
         mQueue.remove(c);
     }
     

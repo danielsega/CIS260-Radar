@@ -6,13 +6,18 @@
 package Logic;
 
 //Invoker
-public class CommandManager {
-    CommandQueue mQueue;
-    ICommand command;
-    ICommand lastCommand;
 
-    public CommandManager(CommandQueue queue) {
+
+import Application.GameObjects;
+
+public class CommandManager {
+    GameObjects mStack;
+    CommandQueue mQueue;
+    Command command;
+
+    public CommandManager(CommandQueue queue, GameObjects stack) {
         mQueue = queue;
+        mStack = stack;
     }
 
     public void HandleCommands(){
@@ -22,22 +27,19 @@ public class CommandManager {
                 mQueue.removeHead();
             }
             
+            
             command = mQueue.pool();
+            
             command.action();
-            lastCommand = command;
         }
     }
     
-    public void setCommand(ICommand c) {
+    public void setCommand(Command c) {
         command = c;
     }
 
     public void executeCommnad() {
         command.action();
-        lastCommand = command;
     }
 
-    public void undo() {
-        lastCommand.action();
-    }
 }

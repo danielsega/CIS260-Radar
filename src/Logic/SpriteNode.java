@@ -8,7 +8,9 @@ package Logic;
 import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -21,32 +23,24 @@ public class SpriteNode extends Entity {
 
     private Image image;
     private AffineTransform at;
-    private BufferedImage mBufferedImage;
     private String fileName;
 
     public SpriteNode() {
-        init();
+        try {
+            image = ImageIO.read(this.getClass().getResource("/Assets/placeholder.jpg"));
+        } catch (IOException ex) {
+            Logger.getLogger(SpriteNode.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        at = new AffineTransform();
     }
 
     public SpriteNode(String name) {
         fileName = "/Assets/" + name;
-        init();
-    }
-
-    private void init() {
-        if (!fileName.isEmpty()) {
-            try {
-                mBufferedImage = ImageIO.read(this.getClass().getResource(fileName));
-            } catch (IOException ex) {
-                Logger.getLogger(SpriteNode.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            image = mBufferedImage;
-        } else {
-            mBufferedImage = new BufferedImage(50, 50, 1);
-            image = mBufferedImage;
+        try {
+            image = ImageIO.read(this.getClass().getResource(fileName));
+        } catch (IOException ex) {
+            Logger.getLogger(SpriteNode.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         at = new AffineTransform();
     }
 
@@ -56,10 +50,6 @@ public class SpriteNode extends Entity {
 
     public Image getImage() {
         return image;
-    }
-
-    public BufferedImage getmBufferedImage() {
-        return mBufferedImage;
     }
 
     public AffineTransform getAt() {

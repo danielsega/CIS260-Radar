@@ -10,7 +10,8 @@ import java.awt.geom.Point2D;
  *
  * @author dmattos18
  */
-public class Entity extends SceneNode{
+public class Entity extends SceneNode {
+
     //--Stats
     private int hp;
 
@@ -22,36 +23,37 @@ public class Entity extends SceneNode{
         position = new Point2D.Float(0, 0);
         velocity = new Point2D.Float(0, 0);
     }
-    
-    Entity(int hitpoints)
-    {
+
+    Entity(int hitpoints) {
         this.hp = hitpoints;
         position = new Point2D.Float(0, 0);
         velocity = new Point2D.Float(0, 0);
     }
-    
-    void repair(int points){
-        if(hp > 0)
+
+    void repair(int points) {
+        if (hp > 0) {
             hp += points;
+        }
     }
-    
-    void damage(int points){
-        if(this.hp > 0)
+
+    void damage(int points) {
+        if (this.hp > 0) {
             hp -= points;
+        }
     }
-    
-    void destroy(){
+
+    void destroy() {
         hp = 0;
     }
-    
-    final boolean isDestroyed(){
+
+    final boolean isDestroyed() {
         return hp <= 0;
     }
-    
-    public void update(){
-        
+
+    public void update() {
+
     }
-    
+
     //--Getters and Setters    
     public int getHp() {
         return hp;
@@ -60,7 +62,7 @@ public class Entity extends SceneNode{
     public void setHp(int hp) {
         this.hp = hp;
     }
-    
+
     public Point2D getPosition() {
         return position;
     }
@@ -68,11 +70,15 @@ public class Entity extends SceneNode{
     public void setPosition(Point2D position) {
         this.position = position;
     }
-    
+
     public void setPosition(float x, float y) {
         this.position.setLocation(x, y);
     }
-    
+
+    public void setPosition(double x, double y) {
+        this.position.setLocation(x, y);
+    }
+
     public Point2D getVelocity() {
         return velocity;
     }
@@ -80,8 +86,12 @@ public class Entity extends SceneNode{
     public void setVelocity(Point2D velocity) {
         this.velocity = velocity;
     }
-    
-     public void setVelocity(float x, float y) {
+
+    public void setVelocity(float x, float y) {
+        this.velocity.setLocation(x, y);
+    }
+
+    public void setVelocity(double x, double y) {
         this.velocity.setLocation(x, y);
     }
 }

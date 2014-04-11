@@ -6,6 +6,7 @@
 package View.Radar;
 
 import Application.IApplication;
+import Application.Scenario;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -15,9 +16,6 @@ import java.awt.Graphics;
  */
 public class JpanRadar extends javax.swing.JPanel implements IApplication{
     //--House Keeping
-    IApplication app;
-    Graphics g;
-            
     private Color darkGreen;
     private Color yellow;
     private double angle;
@@ -26,6 +24,7 @@ public class JpanRadar extends javax.swing.JPanel implements IApplication{
     double degrees;
     final int RADAR_SPPED = 5;
     
+    private Scenario mScenario;
     
     public JpanRadar(Scenario scenario) 
     {
@@ -35,6 +34,7 @@ public class JpanRadar extends javax.swing.JPanel implements IApplication{
         yellow = new Color(230, 230, 0);
         deltax = 0;
         deltay = 0;
+        mScenario = scenario;
     }
 
     @Override

@@ -12,10 +12,13 @@ import java.util.ArrayList;
  */
 
 public class SceneNode{
+    public int ID;
+    
     private SceneNode parent;
     private ArrayList<SceneNode> children;
 
     public SceneNode() {
+        ID = java.lang.System.identityHashCode(ID);
         parent=  null;
         children = new ArrayList<>();        
     }

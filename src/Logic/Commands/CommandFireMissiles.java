@@ -7,25 +7,22 @@
 package Logic.Commands;
 
 import Application.GameObject.Missile;
-import Logic.ICommand;
+import Logic.Command;
 
 /**
  *
  * @author GW
  */
-public class FireMissiles implements ICommand{
+public class CommandFireMissiles extends Command{
     Missile mMissile;
     
-    public FireMissiles(Missile missile) {
+    public CommandFireMissiles(Missile missile) {
         mMissile = missile;
     }
     
     @Override
     public void action() {
+        mMissile.FireMissile();
     }
 
-    @Override
-    public void undo() {
-    }
-    
 }

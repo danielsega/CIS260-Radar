@@ -6,13 +6,13 @@
 
 package Logic;
 
-
 /**
  * @author GW
  */
 
 //--COMMAND INTERFACE
-public interface ICommand{
-    void action();
-    void undo();
+public abstract class Command{
+    public int id;
+    
+    public abstract void action();
 }

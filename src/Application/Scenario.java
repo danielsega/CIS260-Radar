@@ -4,7 +4,6 @@
  */
 package Application;
 
-import Application.GameObject.Submarine;
 import Logic.CommandManager;
 import Logic.CommandQueue;
 
@@ -15,25 +14,15 @@ import Logic.CommandQueue;
 //--Singlenton
 public class Scenario {
 
-    private static int counter;
-    private CommandQueue mQueue;
-    private CommandManager commandMgr;
-    private Submarine sub;
+    public CommandQueue mQueue;
+    public CommandManager commandMgr;
+    
+    public GameObjects gameObj;
 
-    private Scenario() {
-        counter = 0;
+    public Scenario() {
         mQueue = new CommandQueue();
-        commandMgr = new CommandManager(mQueue);
-
-        sub = new Submarine("sub.png");
+        gameObj = new GameObjects();
+        commandMgr = new CommandManager(mQueue, gameObj);        
     }
 
-    public static Scenario getInstance() {
-        if (counter == 0) {
-            counter++;
-            return new Scenario();
-        } else {
-            return null;
-        }
-    }
 }

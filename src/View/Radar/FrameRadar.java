@@ -7,7 +7,7 @@ package View.Radar;
 
 import Application.IApplication;
 import Application.Scenario;
-import Logic.CommandManager;
+import Logic.Commands.Submarine.SubmarineSubmerge;
 import javax.swing.JSlider;
 
 /**
@@ -15,18 +15,26 @@ import javax.swing.JSlider;
  * @author GW
  */
 public class FrameRadar extends javax.swing.JFrame implements IApplication {
+
     public static final String TITLE = "Radar Simulation: ";
     public static final String VERSION = "1.0";
     //--Object that creates and access jpanels
     private AccessorPanelFrame mAccessor;
     private Scenario scenario;
-        
+
+    private int x;
+    private int temp_x;
+    private int y;
+    private boolean forward;
+    private boolean backward;
+    private boolean moving;
+
     /**
      * Creates new form FrameRadar
      */
     public FrameRadar() {
         init();
-        initComponents();        
+        initComponents();
     }
 
     /**
@@ -398,12 +406,32 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("User"));
 
         jbutBack.setText("Backward");
+        jbutBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutBackActionPerformed(evt);
+            }
+        });
 
         jbutForward.setText("Forward");
+        jbutForward.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutForwardActionPerformed(evt);
+            }
+        });
 
         jbutMove.setText("MOVE");
+        jbutMove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutMoveActionPerformed(evt);
+            }
+        });
 
         jbutHalt.setText("HALT");
+        jbutHalt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbutHaltActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -720,7 +748,7 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
     }//GEN-LAST:event_jbutBallisticActionPerformed
 
     private void jtoggleBatleModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtoggleBatleModeActionPerformed
-        if(jtoggleBatleMode.isSelected()){
+        if (jtoggleBatleMode.isSelected()) {
             jtoogleGuidedMissile.setEnabled(true);
             jbutMissile1.setEnabled(true);
             jbutMissile2.setEnabled(true);
@@ -729,8 +757,7 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
             jbutMissile5.setEnabled(true);
             jbutMissile6.setEnabled(true);
             jbutBallistic.setEnabled(true);
-        }
-        else{
+        } else {
             jtoogleGuidedMissile.setEnabled(false);
             jbutMissile1.setEnabled(false);
             jbutMissile2.setEnabled(false);
@@ -746,13 +773,39 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
     }//GEN-LAST:event_jbutMissile1ActionPerformed
 
     private void jsliderSubStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsliderSubStateChanged
-       JSlider source = (JSlider)evt.getSource();
+        JSlider source = (JSlider) evt.getSource();
         if (!source.getValueIsAdjusting()) {
-            //String text = String.valueOf(source.getValue());
-            //jlblDisplay.setText(text); 
-            jprogScenario.setValue(source.getValue());
+            //jprogScenario.setValue(source.getValue());
+            //scenario.gameObj.userSub.getAt().setToTranslation(0, source.getValue());
+            scenario.gameObj.userSub.setPosition(scenario.gameObj.userSub.getPosition().getX(), source.getValue());
+            scenario.commandMgr.setCommand(new SubmarineSubmerge(scenario.gameObj.userSub));
+            scenario.commandMgr.executeCommnad();
         }
     }//GEN-LAST:event_jsliderSubStateChanged
+
+    private void jbutForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutForwardActionPerformed
+        forward = true;
+        backward = false;
+        moving = true;
+        //scenario.commandMgr.setCommand( new SubmarineForward(scenario.gameObj.userSub));
+        //scenario.commandMgr.executeCommnad();
+    }//GEN-LAST:event_jbutForwardActionPerformed
+
+    private void jbutBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutBackActionPerformed
+        forward = false;
+        backward = true;
+        moving = true;
+        //scenario.commandMgr.setCommand( new SubmarineBackward(scenario.gameObj.userSub));
+        //scenario.commandMgr.executeCommnad();
+    }//GEN-LAST:event_jbutBackActionPerformed
+
+    private void jbutMoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutMoveActionPerformed
+        moving = true;
+    }//GEN-LAST:event_jbutMoveActionPerformed
+
+    private void jbutHaltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutHaltActionPerformed
+        moving = false;
+    }//GEN-LAST:event_jbutHaltActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -822,9 +875,16 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
 
     @Override
     public void init() {
-        mAccessor = new AccessorPanelFrame();
         this.setTitle(TITLE + VERSION);
-        scenario = Scenario.getInstance();
+        scenario = new Scenario();
+        mAccessor = new AccessorPanelFrame(scenario);
+
+        forward = false;
+        backward = false;
+        moving = false;
+        x = 0;
+        y = 0;
+        temp_x = 0;
     }
 
     @Override
@@ -839,6 +899,14 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
 
     @Override
     public void update() {
+        if (forward && moving) {
+            x++;
+            scenario.gameObj.userSub.keepForward(x);
+        } else if (backward && moving) {
+            x--;
+            scenario.gameObj.userSub.keepForward(x);
+        }
+
         mAccessor.getmDisplay().update();
         mAccessor.getmRadar().update();
     }

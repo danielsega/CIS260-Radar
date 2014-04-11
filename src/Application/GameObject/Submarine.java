@@ -6,14 +6,13 @@
 
 package Application.GameObject;
 
-import Application.IApplication;
 import Logic.SpriteNode;
 
 /**
  *
  * @author GW
  */
-public class Submarine extends SpriteNode implements IApplication{
+public class Submarine extends SpriteNode {
     //--Game Objects
     Missile mMissile1;
     Missile mMissile2;
@@ -28,7 +27,6 @@ public class Submarine extends SpriteNode implements IApplication{
         init();
     }
 
-    @Override
     public final void init() {
         mMissile1 = new Missile();
         mMissile2 = new Missile();
@@ -36,32 +34,37 @@ public class Submarine extends SpriteNode implements IApplication{
         mMissile4 = new Missile();
         mMissile5 = new Missile();
         mMissile3 = new Missile();
+        
+        attachChild(mMissile1);
+        attachChild(mMissile2);
+        attachChild(mMissile3);
+        attachChild(mMissile4);
+        attachChild(mMissile5);
+        attachChild(mMissile6);
+        
+        setVelocity(1, 1);
     }
 
-    @Override
-    public void cleanUp() {
-    }
-
-    @Override
-    public void handleEvents() {
-    }
-    
-    @Override
-    public void update(){
-        
-    }
-    
-    @Override
-    public void draw(){
-        
-    }
-    
     public void MoveForward(){
-        
+        double x = getPosition().getX() + getVelocity().getX();        
+        getAt().setToTranslation(x, 0);
+        setPosition(x, getPosition().getY());
     }
     
     public void MoveBackward(){
-        
+        double x = getPosition().getX() + getVelocity().getX();
+        x *= -1;
+        getAt().setToTranslation(x, 0);
+        setPosition(x, getPosition().getY());
+    }
+    
+    public void keepForward(int x){
+        getAt().setToTranslation(x, getPosition().getY());
+    }
+    
+    public void keepBackward(int x){
+        x *= -1;
+        getAt().setToTranslation(x, getPosition().getY());
     }
     
     public void Halt(){
@@ -73,6 +76,6 @@ public class Submarine extends SpriteNode implements IApplication{
     }
     
     public void submerge(){
-        
+        getAt().setToTranslation(getPosition().getX(), getPosition().getY());
     }
 }

@@ -15,6 +15,10 @@ public class Projectile extends SpriteNode{
     public Projectile() {
     }
     
+    public Projectile(String name) {
+        super(name);
+    }
+    
     public void FireProjectile(){
     }
     

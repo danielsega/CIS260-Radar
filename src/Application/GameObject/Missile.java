@@ -8,10 +8,15 @@ package Application.GameObject;
  *
  * @author dmattos18
  */
+
 public class Missile extends Projectile{
     //--TODO: Time Stamp
     
     public Missile() {
+    }
+    
+    public Missile(String name) {
+        super(name);
     }
     
     public void FireMissile(){
