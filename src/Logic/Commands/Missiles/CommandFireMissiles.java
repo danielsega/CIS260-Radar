@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Logic.Commands;
+package Logic.Commands.Missiles;
 
 import Application.GameObject.Missile;
 import Logic.Command;

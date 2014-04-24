@@ -46,6 +46,7 @@ public class JpanDisplay extends javax.swing.JPanel implements IApplication{
         g2d.setPaint(mWaterTexture);
         g2d.fillRect(0, 0, this.getWidth(),this.getHeight());
         g2d.drawImage(mScenario.gameObj.userSub.getImage(), mScenario.gameObj.userSub.getAt(), this);
+        g2d.drawImage(mScenario.gameObj.userSub.getmMissile1().getImage(), mScenario.gameObj.userSub.getmMissile1().getAt(), this);
     }
     /**
      * This method is called from within the constructor to initialize the form.

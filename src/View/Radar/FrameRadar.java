@@ -5,8 +5,10 @@
  */
 package View.Radar;
 
+import Application.GameObject.Missile;
 import Application.IApplication;
 import Application.Scenario;
+import Logic.Commands.Missiles.CommandFireMissiles;
 import Logic.Commands.Submarine.SubmarineSubmerge;
 import javax.swing.JSlider;
 
@@ -21,9 +23,9 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
     //--Object that creates and access jpanels
     private AccessorPanelFrame mAccessor;
     private Scenario scenario;
-
+    private int timeX;
+    private int timeY;
     private int x;
-    private int temp_x;
     private int y;
     private boolean forward;
     private boolean backward;
@@ -770,6 +772,11 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
     }//GEN-LAST:event_jtoggleBatleModeActionPerformed
 
     private void jbutMissile1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutMissile1ActionPerformed
+        //--TO DO: STUFF
+        Missile myMissile = scenario.gameObj.userSub.getmMissile1();
+        myMissile.setPosition(scenario.gameObj.userSub.getPosition());
+        scenario.commandMgr.setCommand(new CommandFireMissiles(myMissile));
+        scenario.commandMgr.executeCommnad();
     }//GEN-LAST:event_jbutMissile1ActionPerformed
 
     private void jsliderSubStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsliderSubStateChanged
@@ -806,7 +813,6 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
     private void jbutHaltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutHaltActionPerformed
         moving = false;
     }//GEN-LAST:event_jbutHaltActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -884,7 +890,8 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
         moving = false;
         x = 0;
         y = 0;
-        temp_x = 0;
+        timeX = 0;
+        timeY = 0;
     }
 
     @Override
@@ -899,12 +906,18 @@ public class FrameRadar extends javax.swing.JFrame implements IApplication {
 
     @Override
     public void update() {
+        timeX++;
+        timeY++;
         if (forward && moving) {
             x++;
             scenario.gameObj.userSub.keepForward(x);
         } else if (backward && moving) {
             x--;
             scenario.gameObj.userSub.keepForward(x);
+        }
+        
+        if(scenario.gameObj.userSub.getmMissile1().isFired()){
+            scenario.gameObj.userSub.getmMissile1().keepForward();
         }
 
         mAccessor.getmDisplay().update();

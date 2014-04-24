@@ -14,12 +14,12 @@ import Logic.SpriteNode;
  */
 public class Submarine extends SpriteNode {
     //--Game Objects
-    Missile mMissile1;
-    Missile mMissile2;
-    Missile mMissile3;
-    Missile mMissile4;
-    Missile mMissile5;
-    Missile mMissile6;
+    private Missile mMissile1;
+    private Missile mMissile2;
+    private Missile mMissile3;
+    private Missile mMissile4;
+    private Missile mMissile5;
+    private Missile mMissile6;
     //--TODO: Balistic
     
     public Submarine(String name) {
@@ -28,12 +28,12 @@ public class Submarine extends SpriteNode {
     }
 
     public final void init() {
-        mMissile1 = new Missile();
-        mMissile2 = new Missile();
-        mMissile3 = new Missile();
-        mMissile4 = new Missile();
-        mMissile5 = new Missile();
-        mMissile3 = new Missile();
+        mMissile1 = new Missile("missile.png");
+        mMissile2 = new Missile("missile.png");
+        mMissile3 = new Missile("missile.png");
+        mMissile4 = new Missile("missile.png");
+        mMissile5 = new Missile("missile.png");
+        mMissile3 = new Missile("missile.png");
         
         attachChild(mMissile1);
         attachChild(mMissile2);
@@ -76,6 +76,31 @@ public class Submarine extends SpriteNode {
     }
     
     public void submerge(){
+        setPosition(getPosition().getX(), getPosition().getY() * 2);
         getAt().setToTranslation(getPosition().getX(), getPosition().getY());
+    }
+    
+    public Missile getmMissile1() {
+        return mMissile1;
+    }
+
+    public Missile getmMissile2() {
+        return mMissile2;
+    }
+
+    public Missile getmMissile3() {
+        return mMissile3;
+    }
+
+    public Missile getmMissile4() {
+        return mMissile4;
+    }
+
+    public Missile getmMissile5() {
+        return mMissile5;
+    }
+
+    public Missile getmMissile6() {
+        return mMissile6;
     }
 }
