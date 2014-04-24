@@ -7,6 +7,7 @@
 package Application.GameObject;
 
 import Logic.SpriteNode;
+import java.awt.geom.AffineTransform;
 
 /**
  *
@@ -21,6 +22,7 @@ public class Submarine extends SpriteNode {
     private Missile mMissile5;
     private Missile mMissile6;
     //--TODO: Balistic
+    private AffineTransform mAt;
     
     public Submarine(String name) {
         super(name);
@@ -28,6 +30,12 @@ public class Submarine extends SpriteNode {
     }
 
     public final void init() {
+        setVelocity(1, 1);
+        mAt = getAt();
+        mAt.setToTranslation(0, 120);
+        setAt(mAt);
+        setPosition(mAt.getTranslateX(), mAt.getTranslateY());
+     
         mMissile1 = new Missile("missile.png");
         mMissile2 = new Missile("missile.png");
         mMissile3 = new Missile("missile.png");
@@ -35,14 +43,18 @@ public class Submarine extends SpriteNode {
         mMissile5 = new Missile("missile.png");
         mMissile3 = new Missile("missile.png");
         
+        mMissile1.setPosition(getPosition().getX(), getPosition().getY());
         attachChild(mMissile1);
+        //mMissile2.setPosition(getPosition().getX(), getPosition().getY());
         attachChild(mMissile2);
+        //mMissile3.setPosition(getPosition().getX(), getPosition().getY());
         attachChild(mMissile3);
+        //mMissile4.setPosition(getPosition().getX(), getPosition().getY());
         attachChild(mMissile4);
+        //mMissile5.setPosition(getPosition().getX(), getPosition().getY());
         attachChild(mMissile5);
+        //mMissile6.setPosition(getPosition().getX(), getPosition().getY());
         attachChild(mMissile6);
-        
-        setVelocity(1, 1);
     }
 
     public void MoveForward(){

@@ -41,10 +41,34 @@ public class SpriteNode extends Entity {
         at = new AffineTransform();
     }
 
+    public void setAt(AffineTransform at) {
+        this.at = at;
+    }
+
     public void setName(String name) {
         fileName = name;
     }
 
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public void setInvisible() {
+        try {
+            image = ImageIO.read(this.getClass().getResource("/Assets/blank.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(SpriteNode.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void setVisible() {
+        try {
+            image = ImageIO.read(this.getClass().getResource(fileName));
+        } catch (IOException ex) {
+            Logger.getLogger(SpriteNode.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public Image getImage() {
         return image;
     }

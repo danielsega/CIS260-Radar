@@ -24,22 +24,23 @@ public class Missile extends Projectile{
     }
     
     public void FireMissile(){
+        setVisible();
         fired = true;
-        System.err.println("Fired");
-        double x = getPosition().getX() + getVelocity().getX();        
-        getAt().setToTranslation(x, 0);
-        setPosition(x, getPosition().getY());
+        getAt().setToTranslation(getPosition().getX(), getPosition().getY());
+        setPosition(getPosition().getX(), getPosition().getY());
     }
     
     public void keepForward(){
+        movingX++;
         movingX*=1.03;
         getAt().setToTranslation(movingX, getPosition().getY());
     }
     
     private void init(){
         setVelocity(1, 1);
+        setInvisible();
         fired = false;
-        movingX = 1;
+        movingX = getPosition().getX();
     }
     
     public boolean isFired() {
