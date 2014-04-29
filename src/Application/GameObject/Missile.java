@@ -42,6 +42,10 @@ public class Missile extends Projectile{
         fired = false;
         movingX = getPosition().getX();
     }
+
+    public double getMovingX() {
+        return movingX;
+    }
     
     public boolean isFired() {
         return fired;

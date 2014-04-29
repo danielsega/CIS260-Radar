@@ -72,7 +72,7 @@ public class JpanDisplay extends javax.swing.JPanel implements IApplication{
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void init() {
+    public final void init() {
         try {
             mWater = ImageIO.read(this.getClass().getResource("/Assets/water.jpg"));
         } catch (IOException ex) {

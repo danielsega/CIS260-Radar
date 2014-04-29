@@ -14,8 +14,9 @@ import java.awt.Graphics;
  *
  * @author GW
  */
-public class JpanRadar extends javax.swing.JPanel implements IApplication{
+public class JpanRadar extends javax.swing.JPanel implements IApplication {
     //--House Keeping
+
     private Color darkGreen;
     private Color yellow;
     private double angle;
@@ -23,11 +24,9 @@ public class JpanRadar extends javax.swing.JPanel implements IApplication{
     double deltay;
     double degrees;
     final int RADAR_SPPED = 5;
-    
     private Scenario mScenario;
-    
-    public JpanRadar(Scenario scenario) 
-    {
+
+    public JpanRadar(Scenario scenario) {
         initComponents();
         this.setBackground(Color.black);
         darkGreen = new Color(131, 179, 131);
@@ -38,45 +37,49 @@ public class JpanRadar extends javax.swing.JPanel implements IApplication{
     }
 
     @Override
-    public void paintComponent(Graphics graph){
+    public void paintComponent(Graphics graph) {
         super.paintComponent(graph); //To change body of generated methods, choose Tools | Templates.
 
         //--Draw the Radar Circles        
         graph.setColor(darkGreen);
-        graph.drawOval(10, 10, getWidth() - 20 , getHeight() - 20);
-        graph.drawOval(60, 60, getWidth() - 120 , getHeight() - 120);
-        graph.drawOval(110, 110, getWidth() - 220 , getHeight() - 220);
-        
+        graph.drawOval(10, 10, getWidth() - 20, getHeight() - 20);
+        graph.drawOval(60, 60, getWidth() - 120, getHeight() - 120);
+        graph.drawOval(110, 110, getWidth() - 220, getHeight() - 220);
+
         graph.setColor(yellow);
-        graph.drawLine(this.getWidth() / 2, this.getHeight() / 2, (int)deltax, (int) deltay);
-        
+        graph.drawLine(this.getWidth() / 2, this.getHeight() / 2, (int) deltax, (int) deltay);
+        if (mScenario.gameObj.userSub.getmMissile1().isFired()) {
+            graph.fillOval(
+                    (int) mScenario.gameObj.userSub.getmMissile1().getMovingX(),
+                    this.getHeight() / 2,
+                    10,
+                    10);
+        }
     }
-    
+
     @Override
-    public void update(){
-        degrees = ( ++degrees%360 == 0 ) ? 0 : degrees;
+    public void update() {
+        degrees = (++degrees % 360 == 0) ? 0 : degrees;
         /*angle = Math.toRadians(degrees);
-        deltax = (getWidth() / 2) + (Math.cos(angle) * (deltax - (getWidth() / 2)) - Math.sin(angle) * (deltay - (getWidth() / 2))) + 100;
-        deltay = (getHeight() /2) + (Math.sin(angle) * (deltax - (getHeight() /2)) + Math.cos(angle) * (deltay - (getHeight() /2))) + 100;
+         deltax = (getWidth() / 2) + (Math.cos(angle) * (deltax - (getWidth() / 2)) - Math.sin(angle) * (deltay - (getWidth() / 2))) + 100;
+         deltay = (getHeight() /2) + (Math.sin(angle) * (deltax - (getHeight() /2)) + Math.cos(angle) * (deltay - (getHeight() /2))) + 100;
         
-        System.out.println("X: " + deltax);
-        System.out.println("Y: " + deltay);
-        System.out.println("Angle: " +angle);
-        System.out.println("Degrees: " +degrees);
-        System.out.println("Angle of Vector: " + (int)Math.toDegrees(Math.atan2(deltax, deltay)));*/
-        if(deltax >= 0 && deltax < getWidth() && deltay <= 0){
-            deltax+= RADAR_SPPED;
+         System.out.println("X: " + deltax);
+         System.out.println("Y: " + deltay);
+         System.out.println("Angle: " +angle);
+         System.out.println("Degrees: " +degrees);
+         System.out.println("Angle of Vector: " + (int)Math.toDegrees(Math.atan2(deltax, deltay)));*/
+        if (deltax >= 0 && deltax < getWidth() && deltay <= 0) {
+            deltax += RADAR_SPPED;
+        } else if (deltax >= getWidth() && deltay >= 0 && deltay < getHeight()) {
+            deltay += RADAR_SPPED;
+        } else if (deltax <= getWidth() && deltax > 0 && deltay >= getHeight()) {
+            deltax -= RADAR_SPPED;
+        } else if (/*deltax <= 0 && deltay <= getHeight() &&*/deltay >= 0) {
+            deltay -= RADAR_SPPED;
         }
-        else if(deltax >= getWidth() && deltay >= 0 && deltay < getHeight()){
-            deltay+=RADAR_SPPED;
-        }
-        else if(deltax <= getWidth() && deltax > 0 && deltay >= getHeight()){
-            deltax-=RADAR_SPPED;
-        }
-        else if(/*deltax <= 0 && deltay <= getHeight() &&*/ deltay >= 0){
-            deltay-=RADAR_SPPED;
-        }        
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,10 +101,8 @@ public class JpanRadar extends javax.swing.JPanel implements IApplication{
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
     @Override
     public void init() {
     }
